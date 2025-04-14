@@ -1,0 +1,94 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #eef2f5;
+    margin: 0;
+  }
+
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+
+  #data-container {
+    margin-top: 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-container {
+    margin-top: 20px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    align-items: center;
+  }
+
+  .filter-container input {
+    flex: 1 1 200px;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+  }
+
+  .filter-container input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  table, th, td {
+    border: 1px solid #e0e0e0;
+  }
+
+  th {
+    background-color: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+
+  td {
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  tr:nth-child(even) td {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover td {
+    background-color: #f1f1f1;
+  }
+
+  @media (max-width: 768px) {
+    .filter-container {
+      flex-direction: column;
+    }
+
+    .filter-container input {
+      width: 100%;
+    }
+  }

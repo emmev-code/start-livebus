@@ -1,0 +1,77 @@
+// Funzione per applicare il filtro su ogni colonna
+function applyFilter() {
+    const filterZona = document.getElementById('filterZona').value.toLowerCase();
+    const filterLinea = document.getElementById('filterLinea').value.toLowerCase();
+    const filterVeicolo = document.getElementById('filterVeicolo').value.toLowerCase();
+    const filterCodiceFermata = document.getElementById('filterCodiceFermata').value.toLowerCase();
+    
+    const table = document.querySelector('table');
+    const rows = table.querySelectorAll('tr');
+
+    rows.forEach((row, index) => {
+      // Non applicare il filtro sulla prima riga (intestazione)
+      if (index === 0) return;
+
+      const cells = row.getElementsByTagName('td');
+      let match = true;
+
+      // Verifica ogni cella rispetto al filtro per la colonna
+      if (cells[0] && !cells[0].textContent.toLowerCase().includes(filterZona)) match = false;
+      if (cells[1] && !cells[1].textContent.toLowerCase().includes(filterLinea)) match = false;
+      if (cells[2] && !cells[2].textContent.toLowerCase().includes(filterVeicolo)) match = false;
+      if (cells[3] && !cells[3].textContent.toLowerCase().includes(filterCodiceFermata)) match = false;
+
+      // Mostra o nascondi la riga in base al filtro
+      row.style.display = match ? '' : 'none';
+    });
+  }
+  fetchData(); // Primo fetch
+  // Fetch dei dati ogni 30 secondi (30 000 millisecondi)
+  timer = setInterval(() => {
+        fetchData();
+  }, 30000);
+  // Fetch dei dati e creazione della tabella
+  function fetchData() {
+    fetch('API_ADDRESS_PLACEHOLDER')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('data-container');
+      container.innerHTML = ''; // Svuota il div prima di aggiungere la tabella
+
+      // Crea la tabella
+      const table = document.createElement('table');
+
+      // Aggiungi l'intestazione della tabella
+      const header = table.createTHead();
+      const headerRow = header.insertRow();
+      headerRow.insertCell().textContent = 'Zona';
+      headerRow.insertCell().textContent = 'Linea';
+      headerRow.insertCell().textContent = 'Fermata';
+      headerRow.insertCell().textContent = 'Codice Fermata';
+      headerRow.insertCell().textContent = 'Veicolo';
+      headerRow.insertCell().textContent = ' ';
+      headerRow.insertCell().textContent = 'Orario';
+
+      // Aggiungi i dati alla tabella
+      const tbody = table.createTBody();
+      data.forEach(row => {
+        const rowElement = tbody.insertRow();
+        row.forEach(cellData => {
+          const cell = rowElement.insertCell();
+          cell.textContent = cellData;
+        });
+      });
+
+      // Aggiungi la tabella alla pagina
+      container.appendChild(table);
+    })
+    .catch(err => {
+      //console.error("Errore nel caricamento dati:", err);
+      document.getElementById('data-container').textContent = "Errore nel caricamento dei dati. Potresti aver superato il rate-limit per il tuo indirizzo IP. Riprova più tardi.";
+    });
+  }
+// Applica il filtro ogni volta che l'utente digita
+document.getElementById('filterZona').addEventListener('input', applyFilter);
+document.getElementById('filterLinea').addEventListener('input', applyFilter);
+document.getElementById('filterVeicolo').addEventListener('input', applyFilter);
+document.getElementById('filterCodiceFermata').addEventListener('input', applyFilter);
