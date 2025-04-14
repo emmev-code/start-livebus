@@ -64,6 +64,8 @@ function applyFilter() {
 
       // Aggiungi la tabella alla pagina
       container.appendChild(table);
+      // Preserva il filtro
+      applyFilter();
     })
     .catch(err => {
       //console.error("Errore nel caricamento dati:", err);
