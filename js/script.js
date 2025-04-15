@@ -72,6 +72,16 @@ function applyFilter() {
       document.getElementById('data-container').textContent = "Errore nel caricamento dei dati. Potresti aver superato il rate-limit per il tuo indirizzo IP. Riprova più tardi.";
     });
   }
+  function updateClock() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
 // Applica il filtro ogni volta che l'utente digita
 document.getElementById('filterZona').addEventListener('input', applyFilter);
 document.getElementById('filterLinea').addEventListener('input', applyFilter);
