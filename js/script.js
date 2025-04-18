@@ -18,7 +18,7 @@ function applyFilter() {
       // Verifica ogni cella rispetto al filtro per la colonna
       if (cells[0] && !cells[0].textContent.toLowerCase().includes(filterZona)) match = false;
       if (cells[1] && !cells[1].textContent.toLowerCase().includes(filterLinea)) match = false;
-      if (cells[2] && !cells[4].textContent.toLowerCase().includes(filterVeicolo)) match = false;
+      if (cells[4] && !cells[4].textContent.toLowerCase().includes(filterVeicolo)) match = false;
       if (cells[3] && !cells[3].textContent.toLowerCase().includes(filterCodiceFermata)) match = false;
 
       // Mostra o nascondi la riga in base al filtro
