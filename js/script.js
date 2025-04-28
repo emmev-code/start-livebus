@@ -69,7 +69,7 @@ function applyFilter() {
     })
     .catch(err => {
       //console.error("Errore nel caricamento dati:", err);
-      document.getElementById('data-container').textContent = "Errore nel caricamento dei dati. Potresti aver superato il rate-limit per il tuo indirizzo IP. Riprova più tardi.";
+      document.getElementById('data-container').innerHTML = `<p>Errore nel caricamento dei dati. Potrebbe essere un problema di rete, o un problema con la nostra API. Per favore <a href="#" onclick="fetchData()">riprova adesso</a> o riprova più tardi.</p>`;
     });
   }
   function updateClock() {
