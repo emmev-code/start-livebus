@@ -83,8 +83,8 @@ function applyFilter() {
     // Pulisci tutti i filtri
     document.getElementById("filterZona").value = "";
     document.getElementById("filterLinea").value = "";
-    document.getElementById("filterVeicolo").innerHTML = "";
-    document.getElementById("filterCodiceFermata").innerHTML = "";
+    document.getElementById("filterVeicolo").value = "";
+    document.getElementById("filterCodiceFermata").value = "";
     // Esegui la funzione per applicare i filtri (per sicurezza)
     applyFilter();
   }
