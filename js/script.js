@@ -79,6 +79,15 @@ function applyFilter() {
     const seconds = String(now.getSeconds()).padStart(2, '0');
     document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
   }
+  function clearFilters() {
+    // Pulisci tutti i filtri
+    document.getElementById("filterZona").value = "";
+    document.getElementById("filterLinea").value = "";
+    document.getElementById("filterVeicolo").innerHTML = "";
+    document.getElementById("filterCodiceFermata").innerHTML = "";
+    // Esegui la funzione per applicare i filtri (per sicurezza)
+    applyFilter();
+  }
 
   setInterval(updateClock, 1000);
   updateClock();

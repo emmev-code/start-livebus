@@ -100,3 +100,20 @@ body {
       width: 100%;
     }
   }
+
+  button {
+    background-color: white;
+    /*color: rgb(0, 0, 0);*/
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: inherit;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:disabled {
+    cursor: not-allowed;
+  }
